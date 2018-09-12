@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+
+
+	<script>
+		//Função que verifica o troco que deve ser devolvido com bassê no valor da compra
+		function Troco(){
+			var compra = document.getElementById('compra');//recebe o valor da compra
+			var pago = document.getElementById("pago");//recebe o valor pago
+
+            //Verifica se foi inserindo carácteres que represente números quebrados
+            if (compra.value.indexOf(".")!= -1 ||  compra.value.indexOf(",")!= -1 || pago.value.indexOf(".")!= -1 ||  pago.value.indexOf(",")!= -1) {
+            	alert("Favor informar apenas números Inteiros!");
+            }
+
+            else{
+                //calcula o valor do troco recebendo o valor pago e o da compra como base
+                var troco = parseInt(pago.value) - parseInt(compra.value);
+                
+                //Variável que recebe a mensagem que sera exibida com o valor do troco e das notas
+                var msg = "Troco de " + troco + " em: \n";
+                
+                //Vetor contendo as notas disponíveis e que recebera a quantidade de cada uma na devolução do troco
+                var notas = [["R$ 100,00",0],["R$ 50,00",0],["R$ 20,00",0],["R$ 10,00",0],["R$ 1,00",0]];
+                
+                //Verificação se o troco é negativo referenciando um valor pago menor que o valor da compra
+                if (troco < 0) {
+                	alert("O valor da Compra excede o Valor Pago");
+                }
+
+                else {
+                	//Esse loop compara o troco e incremente a quantidade de cada nota que deve ser devolvida, em cada ciclo ele identifica qual nota se adequá ao valor do troco ate o troco chegar a zero
+
+                	while (troco > 0) {
+                		switch(true) {
+                			case (troco>= 100) : 
+                			notas[0][1]++;
+                			troco -= 100;
+                			console.log(notas[0][1]);
+                			break;
+
+                			case (troco<100 && troco>= 50) : 
+                			notas[1][1]++;
+                			troco -= 50;
+                			break;
+
+                			case (troco<50 && troco>= 20) : 
+                			notas[2][1]++;
+                			troco -= 20;
+                			break;
+
+                			case (troco<20 && troco>= 10) : 
+                			notas[3][1]++;
+                			troco -= 10;
+                			break;
+
+                			case (troco<10) : 
+                			notas[4][1]++;
+                			troco -= 1;
+                			break;
+                		}
+                	}
+
+                    //Percorre o vetor das notas identificando qual não sera necessária no troco
+                	for (var i = 0; i < notas.length; i++) {
+                		if (notas[i][1] > 0 ) {
+
+                            //diferencia a mensagem caso a quantidade de notas entregues for maio que 1
+                			if (notas[i][1] > 1) {
+                				msg += notas[i][1] + " notas de " + notas[i][0] + "\n";
+                			} 
+                			else {
+                				msg += notas[i][1] + " nota de " + notas[i][0] + "\n";
+                			}	
+                		}
+                	}
+                    //Exibe a mensagem de resposta com o troco e as notas a serem entregues
+                	alert(msg);
+
+
+                }
+            }
+            
+            //Limpa os campos para uma nova verificação
+            compra.value = "";
+            pago.value = "";
+
+
+        }
+
+    </script>
+
+
+</head>
+
+<body>
+
+	<p>
+		<label for="">Insira o Valor da Compra:</label>
+		<input type="number" id="compra"> 
+	</p>
+	<label for="">Insira o Valor Pago:</label>
+	<input type="number" id="pago">
+
+	<p>
+		<button type="button" onclick="Troco();">Troco</button>
+	</p>
+
+
+</body>
+</html>

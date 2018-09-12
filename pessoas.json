@@ -1,0 +1,6 @@
+[
+	{"nome":"José", "ddd":27, "telefone":21239990, "cpf":"11111111111", "sabe_programar":true},
+	{"nome":"João", "ddd":27, "telefone":21239990, "cpf":"22222222222", "sabe_programar":false},
+	{"nome":"Maria", "ddd":27, "telefone":21239990, "cpf":"22222222222", "sabe_programar":true},
+	{"nome":"Antônio", "ddd":27, "telefone":21239990, "cpf":"22222222222", "sabe_programar":false}
+]

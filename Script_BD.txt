@@ -1,0 +1,20 @@
+create database consys;
+
+
+use consys;
+
+
+create table pessoas (
+
+id integer not null primary key auto_increment,
+
+nome varchar(50) not null,
+
+ddd integer(2) not null,
+
+telefone integer(8) not null,
+
+cpf varchar(11) not null,
+
+sabe_programar tinyint not null
+);

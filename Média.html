@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+
+	<script>
+        
+        //Vetor que recebe os números digitados
+		var val = [];
+
+        //Função que calcula a média conforme ocorre a solicitação
+		function Media() {
+			var num = document.getElementById('numero');//Variável que recebe o campo do número digitado
+			var res = document.getElementById("result");//Variável que recebe o campo do resultado
+			
+			var media; //Variável que ira receber o valor da media
+			var msg = "Média dos Números: ";//Mensagem que exibe os números digitados
+
+			val.push(parseFloat(num.value));//Adiciona os números no vetor conforme
+
+            //Loop que calculas a media somando os números do vetor
+			for (var i = 0; i < val.length; i++) {
+				if (i > 0) {
+					msg += ", ";
+				}
+
+				media += val[i];
+
+				msg += val[i];
+			}
+            //Exibe os números digitado contidos no vetor
+			document.getElementById("numeros").innerHTML = msg + ".";
+            
+			media = media / val.length;//Divide o resultado das somas ocorrida no loop pela quntidade de itens do vetor
+
+			res.value = media;//Exibe a média
+
+			num.value = "";//Limpa o campo de números para que possa ser usado novamente
+		}
+
+	</script>
+
+
+</head>
+
+<body>
+
+	<p>
+		<label for="">Insira um Número:</label>
+		<input type="number" id="numero">
+		<button type="button" onclick="Media();">Média</button>
+	</p>
+
+	<p id="numeros"></p>
+
+	<p>
+		<label for="">Resultado:</label> <input  id="result" type="number" disabled="disabled">
+	</p>
+
+	
+
+
+
+
+
+	
+</body>
+</html>
